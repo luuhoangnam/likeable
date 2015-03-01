@@ -55,8 +55,8 @@ class Post extends Model
 # API
 
 ```php
-$user = User::find(1);
-$post = Post::find(2);
+$user = \App\User::find(1);
+$post = \App\Post::find(2);
 
 $like = $user->like($post); // Return Namest\Likeable\Like instance
 $result = $user->unlike($post); // Return true when success and false on otherwise
