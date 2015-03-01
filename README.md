@@ -1,5 +1,39 @@
-# API
+# Setting Started
 
+Provide an _elegant way_ to interact with like feature between your eloquent models.
+
+**Note**: Package only support Laravel 5
+
+# Installation
+
+**Step 1**: Install package
+```bash
+composer require namest/likeable
+```
+
+**Step 2**: Register service provider in your `config/app.php`
+```php
+return [
+    ...
+    'providers' => [
+        ...
+        'Namest\Likeable\LikeableServiceProvider',
+    ],
+    ...
+];
+```
+
+**Step 3**: Publish package resource, include: configs, migrations. Open your terminal and type:
+```bash
+php artisan vendor:publish --provider="Namest\Likeable\LikeableServiceProvider"
+```
+
+**Step 4**: Migrate the migration that have been published
+```bash
+php artisan migrate
+```
+
+**Step 5**: Use some trait to make awesome things
 ```php
 class User extends Model
 {
@@ -11,6 +45,10 @@ class Post extends Model
     use \Namest\Likeable\LikeableTrait;
 }
 ```
+
+**Step 6**: Read API below and start _happy_
+
+# API
 
 ```php
 $user = User::find(1);
