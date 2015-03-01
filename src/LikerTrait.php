@@ -32,6 +32,8 @@ trait LikerTrait
      */
     public function like(Model $model)
     {
+        $this->getEventDispatcher()->fire('namest.likeable.liking', [$this, $model]);
+
         $like = new Like;
 
         $like->liker_id      = $this->getKey();
@@ -40,6 +42,8 @@ trait LikerTrait
         $like->likeable_type = get_class($model);
 
         $like->save();
+
+        $this->getEventDispatcher()->fire('namest.likeable.liked', [$this, $model, $like]);
 
         return $like;
     }
@@ -51,14 +55,19 @@ trait LikerTrait
      */
     public function unlike(Model $model)
     {
-        /** @var Model $like */
+        $this->getEventDispatcher()->fire('namest.likeable.unliking', [$this, $model]);
+
         $like = Like::where('liker_id', '=', $this->getKey())
                     ->where('liker_type', '=', get_class($this))
                     ->where('likeable_id', '=', $model->getKey())
                     ->where('likeable_type', '=', get_class($model))
                     ->first();
 
-        return $like->delete();
+        $result = $like->delete();
+
+        $this->getEventDispatcher()->fire('namest.likeable.unliked', [$this, $model]);
+
+        return $result;
     }
 
     /**
