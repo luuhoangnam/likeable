@@ -16,5 +16,10 @@
         "phpunit/phpunit": "~4.5",
         "mockery/mockery": "~0.9"
     },
+    "autoload": {
+        "psr-4": {
+            "Namest\\Likeable\\": "src/"
+        }
+    },
     "minimum-stability": "stable"
 }
