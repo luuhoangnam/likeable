@@ -1,4 +1,4 @@
-# Setting Started
+# Getting Started
 
 Provide an _elegant way_ to interact with like feature between your eloquent models.
 
