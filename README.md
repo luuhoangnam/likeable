@@ -1,6 +1,18 @@
 # API
 
 ```php
+class User 
+{
+    use \Namest\Likeable\LikerTrait;
+}
+
+class Post
+{
+    use \Namest\Likeable\LikeableTrait;
+}
+```
+
+```php
 $user = User::find(1);
 $post = Post::find(2);
 
@@ -14,5 +26,11 @@ $post = $like->likeable; // Return model that was liked by another model
 ```
 
 ```php
-$likes = $user->likes; // Return likes collection
+$posts = $user->likes; // Return likeable collection that liker was liked
+$users = $post->likers; // Return liker collection who like that post
+```
+
+```php
+$users = User::wasLike($post)->...->get(); // Return liker collection who like that post
+$posts = Post::likedBy($user)->...->get(); // Return post collection which was liked by the user 
 ```
