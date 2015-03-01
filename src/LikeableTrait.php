@@ -9,7 +9,7 @@ namespace Namest\Likeable;
  * @package Namest\Likeable
  *
  */
-class LikeableTrait
+trait LikeableTrait
 {
 
 }
