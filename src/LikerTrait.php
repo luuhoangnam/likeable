@@ -10,6 +10,8 @@ use Illuminate\Database\Query\Builder as QueryBuilder;
 /**
  * Trait LikerTrait
  *
+ * @property-read Collection $likes
+ *
  * @method static QueryBuilder|EloquentBuilder|$this wasLiked(Model $likeable)
  *
  * @author  Nam Hoang Luu <nam@mbearvn.com>
