@@ -81,7 +81,7 @@ $posts = Post::likedBy($user)->...->get(); // Return post collection which was l
 
 #### namest.likeable.liking
 
-Before `$liker` like a likeable
+When: Before `$liker` like a likeable
 
 Payloads:
 - `$liker`: Who do this action
@@ -96,7 +96,7 @@ Usage:
 
 #### namest.likeable.liked
 
-After `$liker` was like a likeable
+When: After `$liker` was like a likeable
 
 Payloads:
 - `$liker`: Who do this action
@@ -112,7 +112,7 @@ Usage:
 
 #### namest.likeable.unliking
 
-Before `$liker` unlike a likeable
+When: Before `$liker` unlike a likeable
 
 Payloads:
 - `$liker`: Who do this action
@@ -127,7 +127,7 @@ Usage:
 
 #### namest.likeable.unliked
 
-After `$liker` was unlike a likeable
+When: After `$liker` was unlike a likeable
 
 Payloads:
 - `$liker`: Who do this action
