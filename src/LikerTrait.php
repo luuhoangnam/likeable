@@ -2,6 +2,7 @@
 
 namespace Namest\Likeable;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Query\Builder as QueryBuilder;
@@ -58,13 +59,17 @@ trait LikerTrait
     }
 
     /**
-     * @return HasMany
+     * TODO Optimize performance by reduce SQL query
+     *
+     * @return array
      */
-    public function likes()
+    public function getLikesAttribute()
     {
         $relation = $this->hasMany(Like::class, 'liker_id', 'id');
         $relation->getQuery()->where('liker_type', '=', get_class($this));
 
-        return $relation;
+        return new Collection(array_map(function ($like) {
+            return forward_static_call([$like['likeable_type'], 'find'], $like['likeable_id']);
+        }, $relation->getResults()->toArray()));
     }
 }
