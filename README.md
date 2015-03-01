@@ -12,3 +12,7 @@ $user->unlike($post); // Return true when success and false on otherwise
 $user = $like->liker; // Return model that like another model
 $post = $like->likeable; // Return model that was liked by another model
 ```
+
+```php
+$likes = $user->likes; // Return likes collection
+```
