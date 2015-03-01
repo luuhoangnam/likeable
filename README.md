@@ -1,12 +1,12 @@
 # API
 
 ```php
-class User 
+class User extends Model
 {
     use \Namest\Likeable\LikerTrait;
 }
 
-class Post
+class Post extends Model
 {
     use \Namest\Likeable\LikeableTrait;
 }
