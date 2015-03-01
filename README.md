@@ -33,7 +33,7 @@ php artisan vendor:publish --provider="Namest\Likeable\LikeableServiceProvider"
 php artisan migrate
 ```
 
-**Step 5**: Use some trait to make awesome things
+**Step 5**: Use some traits to make awesome things
 ```php
 class User extends Model
 {
