@@ -2,14 +2,15 @@
 
 namespace Namest\Likeable;
 
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Query\Builder as QueryBuilder;
-use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 
 /**
  * Class LikerTrait
+ *
+ * @method static QueryBuilder|EloquentBuilder|$this wasLiked(Model $likeable)
  *
  * @author  Nam Hoang Luu <nam@mbearvn.com>
  * @package Namest\Likeable
@@ -71,5 +72,25 @@ trait LikerTrait
         return new Collection(array_map(function ($like) {
             return forward_static_call([$like['likeable_type'], 'find'], $like['likeable_id']);
         }, $relation->getResults()->toArray()));
+    }
+
+    /**
+     * @param EloquentBuilder|QueryBuilder $query
+     * @param Model                        $likeable
+     *
+     * @return QueryBuilder
+     */
+    public function scopeWasLiked($query, Model $likeable)
+    {
+        $table   = $this->getTable();
+        $builder = $query->getQuery();
+
+        $query->getQuery()
+              ->join('likes', 'likes.liker_id', '=', "{$table}.id")
+              ->where('likes.liker_type', '=', get_class($this))
+              ->where('likes.likeable_id', '=', $likeable->getKey())
+              ->where('likes.likeable_type', '=', get_class($likeable));
+
+        return $builder;
     }
 }
