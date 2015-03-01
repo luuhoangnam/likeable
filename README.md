@@ -43,7 +43,7 @@ Before `$liker` like a likeable
 Payloads:
 - `$liker`: Who do this action
 - `$likeable`: Which will be liked
-Example:
+Usage:
 ```php
 \Event::listen('namest.likeable.liking', function ($liker, $likeable) {
     // Do something
@@ -57,7 +57,7 @@ Payloads:
 - `$liker`: Who do this action
 - `$likeable`: Which was liked
 - `$like`: Like instance
-Example:
+Usage:
 ```php
 \Event::listen('namest.likeable.liked', function ($liker, $likeable, $like) {
     // Do something
@@ -70,7 +70,7 @@ Before `$liker` unlike a likeable
 Payloads:
 - `$liker`: Who do this action
 - `$likeable`: Which will be unliked
-Example:
+Usage:
 ```php
 \Event::listen('namest.likeable.unliking', function ($liker, $likeable) {
     // Do something
@@ -83,7 +83,7 @@ After `$liker` was unlike a likeable
 Payloads:
 - `$liker`: Who do this action
 - `$likeable`: Which was unliked
-Example:
+Usage:
 ```php
 \Event::listen('namest.likeable.unliked', function ($liker, $likeable) {
     // Do something
