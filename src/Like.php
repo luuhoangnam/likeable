@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Like
  *
- * @property int    liker_id
- * @property string liker_type
- * @property int    likeable_id
- * @property string likeable_type
+ * @property int        liker_id
+ * @property string     liker_type
+ * @property int        likeable_id
+ * @property string     likeable_type
+ *
+ * @property-read Model $liker
+ * @property-read Model $likeable
  *
  * @author  Nam Hoang Luu <nam@mbearvn.com>
  * @package Namest\Likeable
