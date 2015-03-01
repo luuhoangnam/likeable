@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 
 /**
- * Class LikerTrait
+ * Trait LikerTrait
  *
  * @method static QueryBuilder|EloquentBuilder|$this wasLiked(Model $likeable)
  *

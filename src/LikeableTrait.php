@@ -3,7 +3,7 @@
 namespace Namest\Likeable;
 
 /**
- * Class LikeableTrait
+ * Trait LikeableTrait
  *
  * @author  Nam Hoang Luu <nam@mbearvn.com>
  * @package Namest\Likeable
