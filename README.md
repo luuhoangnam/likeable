@@ -23,7 +23,7 @@ return [
 ];
 ```
 
-**Step 3**: Publish package resource, include: configs, migrations. Open your terminal and type:
+**Step 3**: Publish package resources, include: configs, migrations. Open your terminal and type:
 ```bash
 php artisan vendor:publish --provider="Namest\Likeable\LikeableServiceProvider"
 ```
@@ -38,11 +38,15 @@ php artisan migrate
 class User extends Model
 {
     use \Namest\Likeable\LikerTrait;
+    
+    // ...
 }
 
 class Post extends Model
 {
     use \Namest\Likeable\LikeableTrait;
+    
+    // ...
 }
 ```
 
