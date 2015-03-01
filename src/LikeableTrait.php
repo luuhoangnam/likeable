@@ -45,11 +45,10 @@ trait LikeableTrait
         $table   = $this->getTable();
         $builder = $query->getQuery();
 
-        $query->getQuery()
-              ->join('likes', 'likes.likeable_id', '=', "{$table}.id")
-              ->where('likes.likeable_type', '=', get_class($this))
-              ->where('likes.liker_type', '=', get_class($liker))
-              ->where('likes.liker_id', '=', $liker->getKey());
+        $builder->join('likes', 'likes.likeable_id', '=', "{$table}.id")
+                ->where('likes.likeable_type', '=', get_class($this))
+                ->where('likes.liker_type', '=', get_class($liker))
+                ->where('likes.liker_id', '=', $liker->getKey());
 
         return $builder;
     }

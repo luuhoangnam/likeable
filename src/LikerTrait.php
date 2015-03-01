@@ -96,11 +96,10 @@ trait LikerTrait
         $table   = $this->getTable();
         $builder = $query->getQuery();
 
-        $query->getQuery()
-              ->join('likes', 'likes.liker_id', '=', "{$table}.id")
-              ->where('likes.liker_type', '=', get_class($this))
-              ->where('likes.likeable_id', '=', $likeable->getKey())
-              ->where('likes.likeable_type', '=', get_class($likeable));
+        $builder->join('likes', 'likes.liker_id', '=', "{$table}.id")
+                ->where('likes.liker_type', '=', get_class($this))
+                ->where('likes.likeable_id', '=', $likeable->getKey())
+                ->where('likes.likeable_type', '=', get_class($likeable));
 
         return $builder;
     }
