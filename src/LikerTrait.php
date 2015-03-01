@@ -3,6 +3,9 @@
 namespace Namest\Likeable;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Query\Builder as QueryBuilder;
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 
 /**
  * Class LikerTrait
@@ -52,5 +55,16 @@ trait LikerTrait
                     ->first();
 
         return $like->delete();
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function likes()
+    {
+        $relation = $this->hasMany(Like::class, 'liker_id', 'id');
+        $relation->getQuery()->where('liker_type', '=', get_class($this));
+
+        return $relation;
     }
 }
